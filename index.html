@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <title>Tic Tac Toe</title>
+    </head>
+    <body>
+        <div class="frontPage">
+            <h1 class="choiceText">Choose your side!</h1>
+            <div class="choiceSelect">
+                <div class="choiceImage">
+                    <img src="assets/circle.png">
+                </div>
+                <div class="choiceImage">
+                    <img src="assets/cross.png">
+                </div>
+            </div>
+        </div>
+        <div class="choiceGo hidden">
+            <h1 class="choiceText">Let's go!</h1>
+        </div>
+        <div class="gameContainer hidden" id="board">
+            <div class="gameGrid">
+                <div class="cell" id="dataCell"></div>
+                <div class="cell" id="dataCell"></div>
+                <div class="cell" id="dataCell"></div>
+                <div class="cell" id="dataCell"></div>
+                <div class="cell" id="dataCell"></div>
+                <div class="cell" id="dataCell"></div>
+                <div class="cell" id="dataCell"></div>
+                <div class="cell" id="dataCell"></div>
+                <div class="cell" id="dataCell"></div>
+            </div>
+        </div>
+        <div class="afterGame hidden" id="afterGame">
+            <div class="winMessage" id="winMessage"></div>
+            <div class="restartMessage" id="restartMessage"></div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

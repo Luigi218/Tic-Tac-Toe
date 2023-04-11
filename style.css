@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.frontPage {
+    margin-top: 15%;
+    text-align: center;
+}
+
+.choiceText {
+    font-size: 50px;
+}
+
+.choiceSelect {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+img {
+    width: 300px;
+    height: 300px;
+}
+
+.choiceGo {
+    margin-top: 15%;
+    text-align: center;
+}
+
+.gameContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.gameGrid {
+    margin-top: 10%;
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px);
+}
+
+.cell {
+    border: 3px solid black;
+}
+
+.cell:nth-child(1), .cell:nth-child(2), .cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:nth-child(1), .cell:nth-child(4), .cell:nth-child(7) {
+    border-left: none;
+}
+
+.cell:nth-child(3), .cell:nth-child(6), .cell:nth-child(9) {
+    border-right: none;
+}
+
+.cell:nth-child(7), .cell:nth-child(8), .cell:nth-child(9) {
+    border-bottom: none;
+}
+
+.hidden {
+    display: none;
+}
