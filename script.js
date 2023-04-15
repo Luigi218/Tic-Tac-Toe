@@ -68,15 +68,15 @@ function startGame () {
     cellElements.forEach(cell => {
         cell.classList.remove(player_cross);
         cell.classList.remove(player_circle);
-        cell.removeEventListener("click", handleCellClick);
-        cell.addEventListener("click", handleCellClick, { once:true })
+        cell.removeEventListener("click", cellClick);
+        cell.addEventListener("click", cellClick, { once:true })
     })
     //Hides winner message, and buttons 
     afterGameElement.classList.add("hidden")
 }
 
 //Records if X or O turn, and evaluates game progress (Win, Draw, Next Turn)
-function handleCellClick(e) {
+function cellClick(e) {
     const cell = e.target
     const currentClass = player_circle_turn ? player_circle : player_cross
     placeSymbol (cell, currentClass);
