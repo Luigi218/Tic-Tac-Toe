@@ -21,14 +21,6 @@ const winConditions = [
     [2, 4, 6]
 ]
 
-let boardStatus = [
-    ["", "", ""],
-    ["", "", ""],
-    ["", "", ""]
-]
-
-let moves = []
-
 const circle = document.getElementById("circle")
 const cross = document.getElementById("cross")
 const frontPage = document.getElementById("frontPage")
@@ -57,7 +49,7 @@ restartBtn.addEventListener("click", startGame)
 
 //Starts the game by resetting the board (removing Xs and Os)
 function startGame () {
-    //Chooses whether circle or cross has the first turn
+    //Chooses whether "X" or "O" has the first turn
     circle.addEventListener("click", function () {
         player_circle_turn = true;
     });
@@ -66,9 +58,7 @@ function startGame () {
     });
     //Removes existing marks (X/O)
     cellElements.forEach(cell => {
-        cell.classList.remove(player_cross);
-        cell.classList.remove(player_circle);
-        cell.removeEventListener("click", cellClick);
+        cell.classList.remove(player_cross, player_circle);
         cell.addEventListener("click", cellClick, { once:true })
     })
     //Hides winner message, and buttons 
@@ -95,27 +85,38 @@ function cellClick(e) {
 function endGame(draw) {
     if (draw) {
         winMessageElement.innerHTML = "It's a draw!"
+        cellElements.forEach(cell => {
+            cell.removeEventListener("click", cellClick)
+        })
     }
     else {
         winMessageElement.innerHTML = `${player_circle_turn ? "O" : "X"} wins!`
+        cellElements.forEach(cell => {
+            cell.removeEventListener("click", cellClick)
+        }
+        )
     };
     afterGameElement.classList.toggle("hidden")
 }
 
+//If all cells filled, with no winning combinations
 function checkDraw() {
     return [...cellElements].every(cell => {
         return cell.classList.contains(player_cross) || cell.classList.contains(player_circle)
     })
 }
 
+//Adds "X" or "O" to cell
 function placeSymbol (cell, currentClass) {
     cell.classList.add(currentClass);
 }
 
+//Changes whose turn it is
 function changeTurns () {
     player_circle_turn = !player_circle_turn
 }
 
+//Checks if either side has a winning combination
 function checkWin (currentClass) {
     return winConditions.some(combination => {
         return combination.every(index => {
@@ -126,3 +127,11 @@ function checkWin (currentClass) {
 
 //Initalizes board
 startGame();
+
+let boardStatus = [
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""]
+]
+
+let moves = []

@@ -92,14 +92,12 @@ img {
     display: block;
 }
 
-.cell.X, .cell.O {
-    cursor: not-allowed;
+.cell {
+    cursor:pointer;
 }
 
-.board.X .cell:not(.O):not(.X):hover {
-    content: url(assets/cross.png);
-    height: 197px;
-    width: 197px;
+.cell.X, .cell.O {
+    cursor: not-allowed;
 }
 
 .cell:not(.O).X {
@@ -108,16 +106,14 @@ img {
     width: 197px;
 }
 
-.board.O .cell:not(.O):not(.X):hover {
+.cell:not(.X).O {
     content: url(assets/circle.png);
     height:197px;
     width: 197px;
 }
 
-.cell:not(.X).O {
-    content: url(assets/circle.png);
-    height:197px;
-    width: 197px;
+.cell:hover {
+    background-color: rgb(36, 36, 36);
 }
 
 .afterGame {
