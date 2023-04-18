@@ -126,31 +126,41 @@ function checkWin (currentClass) {
 }
 
 function undoMove(){
-    if (moves.length > 0) {
+    if (moves.length !== 0) {
         moveCounter --;
         let lastMoveArr = moves[moves.length-1];
         let lastMoveIndex = lastMoveArr[0];
         document.getElementById(lastMoveIndex).classList.remove("X", "O");
         redoMoves.push(moves.pop());
+        //console.log(moves)
+        //console.log(moveCounter)
     }
-    else if (moves.length === 0) {
+    else if (moveCounter === 0) {
         previousBtn.disabled = true;
         nextBtn.disabled = false;
+        //console.log(moves)
+        //console.log(moveCounter)
+        //console.log(redoMoves)
     }
 }
 
 function redoMove(){
-    if (redoMoves.length > 0 ) {
+    if (redoMoves.length !== 0 ) {
         moveCounter ++;
         let nextMoveArr = redoMoves[redoMoves.length-1];
         let nextMoveIndex = nextMoveArr[0];
         let nextMoveSymbol = nextMoveArr[1];
         document.getElementById(nextMoveIndex).classList.add(nextMoveSymbol)
         moves.push(redoMoves.pop());
+        //console.log(redoMoves)
+        //console.log(moveCounter)
     }
-    else if (redoMoves.length === 0) {
+    else if (moves.length === moveCounter) {
         nextBtn.disabled = true;
         previousBtn.disabled = false;
+        //console.log(redoMoves)
+        //console.log(moveCounter)
+        //console.log(moves)
     }
 }
 
