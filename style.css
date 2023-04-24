@@ -65,51 +65,22 @@ img {
 }
 
 .cell {
-    border: 5px solid white;
-}
-
-.cell:nth-child(1), .cell:nth-child(2), .cell:nth-child(3) {
-    border-top: none;
-}
-
-.cell:nth-child(1), .cell:nth-child(4), .cell:nth-child(7) {
-    border-left: none;
-}
-
-.cell:nth-child(3), .cell:nth-child(6), .cell:nth-child(9) {
-    border-right: none;
-}
-
-.cell:nth-child(7), .cell:nth-child(8), .cell:nth-child(9) {
-    border-bottom: none;
-}
-
-.hidden {
-    display: none;
-}
-
-.show {
-    display: block;
-}
-
-.cell {
     cursor:pointer;
+    border: 5px solid white;
 }
 
 .cell.X, .cell.O {
     cursor: not-allowed;
+    height: 97%;
+    width: 97%;
 }
 
 .cell:not(.O).X {
     content: url(assets/cross.png);
-    height:197px;
-    width: 197px;
 }
 
 .cell:not(.X).O {
     content: url(assets/circle.png);
-    height:197px;
-    width: 197px;
 }
 
 .cell:hover {
@@ -160,4 +131,12 @@ button:hover {
     margin-top: 25px;
     display: flex;
     align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
 }
