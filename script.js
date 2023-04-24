@@ -57,7 +57,7 @@ function startGame () {
     redoMoves = [];
     moveCounter = 0;
     previousBtn.disabled = false;
-    nextBtn.disabled = false;
+    nextBtn.disabled = true;
 }
 
 //Records if X or O turn, and evaluates game progress (Win, Draw, Next Turn)
@@ -124,6 +124,7 @@ function checkWin (currentClass) {
 }
 
 function undoMove(){
+    undomoveStatus();
     if (moveCounter != 0) {
         nextBtn.disabled = false;
         moveCounter --;
@@ -136,10 +137,21 @@ function undoMove(){
     if (moveCounter <= 0) {
         previousBtn.disabled = true;
         nextBtn.disabled = false;
-    }
+    };
+    
 }
 
+function undomoveStatus () {
+    if (moveCounter === 0) {
+        previousBtn.disabled = true;
+    }
+    else {
+        previousBtn.disabled = false;
+    }
+}
+ 
 function redoMove(){
+    redomoveStatus();
     if (redoMoves.length > 0) {
         previousBtn.disabled = false;
         moveCounter ++;
@@ -154,6 +166,15 @@ function redoMove(){
     if (redoMoves.length <= 0) {
         nextBtn.disabled = true;
         previousBtn.disabled = false;
+    }
+}
+
+function redomoveStatus () {
+    if (redoMoves.length === 0) {
+        nextBtn.disabled = true;
+    }
+    else {
+        nextBtn.disabled = false;
     }
 }
 
